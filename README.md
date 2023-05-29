@@ -4,9 +4,10 @@ This script is designed to run on an Unraid server using the User Scripts plugin
 
 ## Requirements
 
-- Unraid 6.12 or above
-- User Scripts plugin
-- ZFSMaster plugin (optional but recommended)
+- Unraid server (version 6.12 or higher) with ZFS support.
+- [User Scripts](https://forums.unraid.net/topic/48286-plugin-user-scripts/) plugin is installed.
+- (Optional) [ZFS Master plugin](https://forums.unraid.net/topic/122261-plugin-zfs-master/) plugin is installed for enhanced ZFS functionality.
+- Plugins are installed via Unraid's Community Apps
 
 ## Setup
 
@@ -15,6 +16,7 @@ This script is designed to run on an Unraid server using the User Scripts plugin
 3. Edit the script's variables according to your specific server configuration and needs.
 
 ## Variables
+The variables are located at the top of the script. The script as is contains demo variables which you should change to suit your needs.
 
 ```
 dry_run="no"
