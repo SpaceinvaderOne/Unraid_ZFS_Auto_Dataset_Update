@@ -1,8 +1,11 @@
 # Unraid Auto Dataset Watcher & Converter
 
-This script is designed to run on an Unraid server using the User Scripts plugin. It allows you to automatically convert top-level directories into datasets within a specific ZFS dataset on your Zpool. This is particularly useful for managing Docker and VM data for better snapshotting and replication.
+This script, designed to run on an Unraid server using the User Scripts plugin, is a useful tool for managing your ZFS datasets. It actively monitors specified datasets, checking to ensure all top-level folders are actually ZFS datasets themselves. If any regular directories are detected, the script promptly converts them into datasets.
 
-## Requirements
+This functionality proves especially beneficial when managing an appdata share set up as a dataset. For instance, when a new Docker container is installed on Unraid, it generates appdata as a folder within the appdata dataset. This script identifies such instances and converts these folders into individual datasets. Ensuring each Docker container's appdata is isolated in its own dataset allows for precise snapshotting, greatly facilitating rollback operations in case of any issues with a particular container. It provides similar benefits for VMs, transforming newly created VM vdisks - which are typically established as folders - into datasets. These capabilities contribute towards more effective management and recovery of your Docker and VM data.
+
+## Pre-requisites
+Before using the script, ensure the following:
 
 - Unraid server (version 6.12 or higher) with ZFS support.
 - [User Scripts](https://forums.unraid.net/topic/48286-plugin-user-scripts/) plugin is installed.
@@ -30,14 +33,17 @@ cleanup="yes"
 ```
 
 - `dry_run`: This allows you to test the script without making changes to the system. If set to "yes", the script will print out what it would do without actually executing the commands.
-- `source_pool` and `source_dataset`: These are the ZFS pool and dataset where your source data resides.
-- `should_stop_containers` and `should_stop_vms`: These decide whether the script should stop all Docker containers and VMs while it is running. If you know certain containers or VMs do not need to be stopped (for example, they are already datasets or stored on a separate drive), you can set these to "no".
+- `source_pool` and `source_dataset`: These are the ZFS pool name and dataset name where your source data resides which you want the script look for 'regular' directories to convert.
+- `should_stop_containers` and `should_stop_vms`: These decide whether the script should stop all Docker containers and VMs while it is running. 
 - `containers_to_keep_running` and `vms_to_keep_running`: These are arrays where you can list the names of specific Docker containers and VMs that should not be stopped by the script.
+   If you know certain containers or VMs do not need to be stopped (for example, these containers have appdata that is already a dataset or the container ie Plex its appdata is not in a different location.
 - `cleanup`: If set to "yes", the script will remove temporary data that was copied to create the new datasets.
 
 ## Usage
 
-Once you have configured the script and saved it in User Scripts, you can run it manually or set up a custom schedule for it to run automatically at set intervals.
+Install the script using the Unraid Userscripts Plugin. You can set it to run on a schedule according to your needs.
+
+When running this script manually, it is recommended to run it in the background then view logs to see the progress. This is especially important when running the script for the first time or when there is a large amount of data, as it may take some time. If you run the script in the foreground, the browser page needs to be kept open, otherwise, the script will terminate prematurely.
 
 ## Safeguards
 
