@@ -28,7 +28,7 @@ stopped_containers=()
 stopped_vms=()
 
 #
-# Function to stop running Docker containers if required
+# This function is to stop running Docker containers if required
 stop_docker_containers() {
   if [ "$should_stop_containers" = "yes" ]; then
     echo "Checking Docker containers..."
@@ -48,7 +48,7 @@ stop_docker_containers() {
 }
 
 #
-# Function to stop running VMs if required
+# this function is to stoprunning VMs if required
 stop_virtual_machines() {
   if [ "$should_stop_vms" = "yes" ]; then
     echo "Checking VMs..."
@@ -106,7 +106,7 @@ start_docker_containers() {
 
 
 #
-# Function to start VMs that had been stopped earlier
+# function  starts VMs that had been stopped earlier
 start_virtual_machines() {
   if [ "$should_stop_vms" = "yes" ]; then
     for vm in "${stopped_vms[@]}"; do
@@ -130,7 +130,7 @@ create_datasets() {
         if ! zfs list | grep -q "${source_path}/${base_entry}"; then
           echo "Processing folder ${entry}..."
           folder_size=$(du -sb "$entry" | cut -f1)  # This is in bytes
-          folder_size_hr=$(du -sh "$entry" | cut -f1)  # This is in human readable format
+          folder_size_hr=$(du -sh "$entry" | cut -f1)  # This is in human readale
           echo "Folder size: $folder_size_hr"
           if zfs list | grep -q "$source_path" && (( $(zfs list -o avail -p -H "${source_path}") >= folder_size )); then
             echo "Creating and populating new dataset ${source_path}/${base_entry}..."
