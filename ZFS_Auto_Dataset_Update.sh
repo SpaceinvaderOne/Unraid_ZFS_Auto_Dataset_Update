@@ -17,7 +17,7 @@ source_dataset="appdata"  #this is the name of the dataset you want to check and
 should_stop_containers="yes" # Setting to "yes" will stop all containers except thos listed below. This should be set to yes if watching the appdata share
 containers_to_keep_running=("container1" "container2") #Containers that you do not want to be stopped (see readme)
 should_stop_vms="yes"    #Setting to "yes" will stop all vms except thos listed below. This should be set to yes if watching the domain share
-vms_to_keep_running=("Home Assistant" "vm2") #Containers that you do not want to be stopped (see readme)
+vms_to_keep_running=("vm1" "vm2") #Containers that you do not want to be stopped (see readme)
 cleanup="yes"            #Seeting to yes will cleanup after running (see readme)
 
 #
