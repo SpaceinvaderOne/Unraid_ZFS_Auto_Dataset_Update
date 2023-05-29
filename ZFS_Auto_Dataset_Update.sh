@@ -8,7 +8,7 @@
 
 
 # real run or dry run
-dry_run="no"              # Set to "yes" for a dry run. Change to "no" to run for real
+dry_run="yes"              # Set to "yes" for a dry run. Change to "no" to run for real
 
 #
 # Main Variables
