@@ -12,12 +12,12 @@ dry_run="no"              # Set to "yes" for a dry run. Change to "no" to run fo
 
 #
 # Main Variables
-source_pool="sg1_storage"    #this is the zpool in which your source dataset resides (note the does NOT start with /mnt/)
+source_pool="cyberflux"    #this is the zpool in which your source dataset resides (note the does NOT start with /mnt/)
 source_dataset="appdata"     #this is the name of the dataset you want to check and convert its child directories to datasets
 should_stop_containers="yes" # Setting to "yes" will stop all containers except thos listed below. This should be set to yes if watching the appdata share
-containers_to_keep_running=("container1" "container2") #Containers that you do not want to be stopped (see readme)
+containers_to_keep_running=("Emby" "container2") #Containers that you do not want to be stopped (see readme)
 should_stop_vms="no"        #Setting to "yes" will stop all vms except thos listed below. This should be set to yes if watching the domain share
-vms_to_keep_running=("vm1" "vm2") #Containers that you do not want to be stopped (see readme)
+vms_to_keep_running=("Home Assistant" "vm2") #Containers that you do not want to be stopped (see readme)
 cleanup="yes"               #Seeting to yes will cleanup after running (see readme)
 replace_spaces="no"         # Set this to "no" to keep spaces in the dataset names
 #
