@@ -69,4 +69,4 @@ Here's how this script operates:
 
 6. **Restarting Services**: Finally, if the script stopped any Docker containers or VMs at the start, it will restart these services. This ensures your applications continue running with minimal downtime.
 
-Remember, you can use the `dry_run` mode to simulate the script operation without making any actual changes. This mode allows you to see what the script would do before letting it operate on your data. This is especially useful for debugging and understanding how the script would interact with your specific configuration.
+Remember, you can use the `dry_run` mode to simulate the script operation without making any actual changes. This mode allows you to see what the script would do before letting it operate on your data. This is especially useful for understanding how the script would interact with your specific configuration.
