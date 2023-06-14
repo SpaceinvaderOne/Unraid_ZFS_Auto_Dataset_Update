@@ -30,6 +30,7 @@ containers_to_keep_running=("container1" "container2")
 should_stop_vms="yes"
 vms_to_keep_running=("Home Assistant" "vm2")
 cleanup="yes"
+replace_spaces="no" 
 ```
 
 - `dry_run`: This allows you to test the script without making changes to the system. If set to "yes", the script will print out what it would do without actually executing the commands.
@@ -38,6 +39,7 @@ cleanup="yes"
 - `containers_to_keep_running` and `vms_to_keep_running`: These are arrays where you can list the names of specific Docker containers and VMs that should not be stopped by the script.
    If you know certain containers or VMs do not need to be stopped (for example, these containers have appdata that is already a dataset or the container ie Plex its appdata is not in a different location.
 - `cleanup`: If set to "yes", the script will remove temporary data that was copied to create the new datasets.
+- `replace_spaces`: If set to "yes", the script will replace spaces in the names of datasets with underscores. Useful in some situations.
 
 ## Usage
 
