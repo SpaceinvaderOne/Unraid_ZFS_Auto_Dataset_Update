@@ -161,6 +161,8 @@ create_datasets() {
                   echo "Source files: $source_file_count, Destination files: $destination_file_count"
                   echo "Source total size: $source_total_size, Destination total size: $destination_total_size"
                 fi
+              elif [ "$cleanup" = "no" ]; then
+                echo "Cleanup is disabled.. Skipping cleanup for ${entry}"
               else
                 echo "Rsync encountered an error. Skipping cleanup for ${entry}"
               fi
