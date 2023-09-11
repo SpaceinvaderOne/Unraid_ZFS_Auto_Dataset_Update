@@ -1,5 +1,8 @@
 # Unraid Auto Dataset Watcher & Converter
 
+```BETA version of script is now also available that will allow multi datasets and auto stop non converted docker containers and vms  -- Unraid_ZFS_Auto_Dataset_Update_Advance.sh```
+
+
 This script, designed to run on an Unraid server using the User Scripts plugin, is a useful tool for managing your ZFS datasets. It actively monitors specified datasets, checking to ensure all top-level folders are actually ZFS datasets themselves. If any regular directories are detected, the script  converts them into datasets.
 
 This functionality proves especially beneficial when managing, for eaxample, an appdata share set up as a dataset. For instance, when a new Docker container is installed on Unraid, it generates that new container's appdata as a folder within the appdata dataset. This script identifies such instances and converts these folders into individual datasets. Ensuring each Docker container's appdata is isolated in its own dataset allows for precise snapshotting, greatly facilitating rollback operations in case of any issues with a particular container. It provides similar benefits for VMs, transforming newly created VM vdisks - which are typically established as folders - into datasets. These capabilities contribute towards more effective management and recovery of your Docker and VM data.
