@@ -124,13 +124,26 @@ start_virtual_machines() {
   fi
 }
 
+# function  normalize umlauts
+normalize_name() {
+  local original_name="$1"
+  # Replace German umlauts with ASCII approximations
+  local normalized_name=$(echo "$original_name" | 
+                          sed 's/ä/ae/g; s/ö/oe/g; s/ü/ue/g; 
+                               s/Ä/Ae/g; s/Ö/Oe/g; s/Ü/Ue/g; 
+                               s/ß/ss/g')
+  echo "$normalized_name"
+}
+
+
 #
 # main function creating/converting to datasets and copying data within
 create_datasets() {
   for entry in "${mount_point}/${source_path}"/*; do
     base_entry=$(basename "$entry")
     if [[ "$base_entry" != *_temp ]]; then
-      normalized_base_entry=$(if [ "$replace_spaces" = "yes" ]; then echo "$base_entry" | tr ' ' '_'; else echo "$base_entry"; fi)
+     base_entry_no_spaces=$(if [ "$replace_spaces" = "yes" ]; then echo "$base_entry" | tr ' ' '_'; else echo "$base_entry"; fi)
+     normalized_base_entry=$(normalize_name "$base_entry_no_spaces")
       if zfs list -o name | grep -q "^${source_path}/${normalized_base_entry}$"; then
         echo "Skipping dataset ${entry}..."
       elif [ -d "$entry" ]; then
