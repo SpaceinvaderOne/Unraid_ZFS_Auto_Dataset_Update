@@ -120,13 +120,13 @@ _Key Concepts_:
     
 -   **ZFS Dataset**: A ZFS dataset can be thought of as a sort of advanced folder with features like compression, quota, and snapshot capabilities.
     
--   **rsync**: A fast, versatile utility for copying files and directories. It's often used for mirroring and backups.Keeps timestamps and permissions etc
+-   **rsync**: A fast, versatile utility for copying files and directories. It's often used for mirroring and backups. Keeps timestamps and permissions etc
     
 
 **How script  Works**:
 
 1.  The script first checks whether it should process Docker containers or VMs based on the user's settings.
-2.  For Docker containers, the script examines their bind mounts. If any bind mount's true location (i.e., beyond symbolic links) resides inside a regular folder (and not a ZFS dataset) in the designated source path for appdata, that container is stopped.
+2.  For Docker containers, the script examines their bind mounts. If any bind mount's true location resides inside a regular folder (and not a ZFS dataset) in the designated source path for appdata, that container is stopped.
 3.  Similarly, for VMs, the script checks the true location of their disks. VMs with disks residing inside regular folders in the designated source path for VM domains are stopped.
 4.  With the necessary containers and VMs stopped, the script converts relevant folders in the source paths into ZFS datasets.
 5.  Once the conversion process is done, the script restarts the containers and VMs it had stopped.
