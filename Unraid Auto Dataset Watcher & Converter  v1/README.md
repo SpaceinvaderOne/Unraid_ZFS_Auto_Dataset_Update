@@ -1,6 +1,6 @@
 # Unraid Auto Dataset Watcher & Converter
 
-```BETA version of script is now also available that will allow multi datasets and auto stop non converted docker containers and vms  -- Unraid_ZFS_Auto_Dataset_Update_Advance.sh```
+```This version has been superseded by Unraid Auto Dataset Watcher & Converter v2```
 
 
 This script, designed to run on an Unraid server using the User Scripts plugin, is a useful tool for managing your ZFS datasets. It actively monitors specified datasets, checking to ensure all top-level folders are actually ZFS datasets themselves. If any regular directories are detected, the script  converts them into datasets.
