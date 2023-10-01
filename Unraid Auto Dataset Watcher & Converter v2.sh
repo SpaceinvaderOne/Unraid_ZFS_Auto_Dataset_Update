@@ -331,7 +331,7 @@ create_datasets() {
         echo "Folder size: $folder_size_hr"
         buffer_zone_size=$((folder_size * buffer_zone / 100))
         
-        if zfs list -o name | grep -q "^${source_path}/" && (( $(zfs list -o avail -p -H "${source_path}") >= buffer_zone_size )); then
+        if zfs list -o name | grep -qE "^${source_path}" && (( $(zfs list -o avail -p -H "${source_path}") >= buffer_zone_size )); then
           echo "Creating and populating new dataset ${source_path}/${normalized_base_entry}..."
           if [ "$dry_run" != "yes" ]; then
             mv "$entry" "${mount_point}/${source_path}/${normalized_base_entry}_temp"
