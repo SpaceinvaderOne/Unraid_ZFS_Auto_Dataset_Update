@@ -148,7 +148,11 @@ stop_docker_containers() {
       done <<< "$bindmounts"  #  send  bindmounts into the loop
 
       if [ "$stop_container" = true ]; then
-        docker stop "$container"
+        if [ "$dry_run" != "yes" ]; then
+          docker stop "$container_name"
+        else
+          echo "Dry Run: Docker container $container_name would be stopped"
+        fi
         stopped_containers+=("$container_name")
       else
         echo "Container ${container_name} is not required to be stopped as it is already a separate dataset."
